@@ -6,6 +6,8 @@ export default function Home() {
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <NewTicket />
       </div>
+      <a href="/admin" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Go To Admin</a>
+
     </main>
   );
 }
