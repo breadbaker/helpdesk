@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 
-import Ticket from './Ticket';
+import Ticket from './ticket.js';
 
 function TicketsList({ tickets }) {
   return (
