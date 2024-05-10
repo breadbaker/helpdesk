@@ -7,6 +7,8 @@ export const TicketContext = createContext();
 // Reducer function to handle actions
 const ticketReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_TICKETS':
+        return action.payload;
     case 'ADD_TICKET':
       return [...state, action.payload];
     case 'UPDATE_STATUS':
@@ -19,11 +21,7 @@ const ticketReducer = (state, action) => {
 };
 
 // Initial state
-const initialState = [
-{ name: 'John Doe', email: 'john.doe@example.com', description: 'User cannot access the dashboard.', status: 'New' },
-{ name: 'Jane Smith', email: 'jane.smith@example.com', description: 'Report generation is failing.', status: 'New' },
-{ name: 'Alice Johnson', email: 'alice.johnson@example.com', description: 'Error messages in profile settings.', status: 'New' },
-];
+const initialState = [];
 
 // Context provider component
 export const TicketProvider = ({ children }) => {

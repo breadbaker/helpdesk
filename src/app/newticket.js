@@ -8,16 +8,33 @@ function NewTicket() {
   const [description, setDescription] = useState('');
   const { dispatch } = useContext(TicketContext);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch({
-      type: 'ADD_TICKET',
-      payload: { id: Date.now(), name, email, description, status: 'New' }
-    });
-    // Clear form fields
-    setName('');
-    setEmail('');
-    setDescription('');
+    try {
+      const response = await fetch('/api/tickets', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, description }),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const result = await response.json();
+      console.log('Submitted:', result);
+      // Clear form fields or handle success
+      dispatch({
+        type: 'ADD_TICKET',
+        payload: { id: Date.now(), name, email, description, status: 'New' }
+      });
+      // Clear form fields
+      setName('');
+      setEmail('');
+      setDescription('');
+    } catch (error) {
+      console.error('Failed to submit ticket:', error);
+    }
   };
 
   return (
