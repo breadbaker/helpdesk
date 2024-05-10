@@ -1,16 +1,23 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { TicketContext } from './ticketcontext.js';  // Assume the file is named TicketContext.js
 
 function NewTicket() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [description, setDescription] = useState('');
-  const [status] = useState('New');  // Status defaults to 'New'
+  const { dispatch } = useContext(TicketContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle the submission, e.g., sending data to a server
-    console.log('Submitted:', { name, email, description, status });
+    dispatch({
+      type: 'ADD_TICKET',
+      payload: { id: Date.now(), name, email, description, status: 'New' }
+    });
+    // Clear form fields
+    setName('');
+    setEmail('');
+    setDescription('');
   };
 
   return (

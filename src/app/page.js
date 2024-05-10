@@ -1,4 +1,4 @@
-import Image from "next/image";
+'use client'
 import NewTicket from "./newticket";
 export default function Home() {
   return (
