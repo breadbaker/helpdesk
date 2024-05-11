@@ -49,6 +49,8 @@ function NewTicket() {
         <p>Recieved, we will look into it.</p>
       </div>
       }
+      <h1>New Help Desk Ticket</h1>
+
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2">
           Name:
